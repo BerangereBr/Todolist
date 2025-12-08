@@ -6,11 +6,11 @@ function Logout() {
     const navigate = useNavigate();
     const handleLogout = () => {
         logout();
-        navigate("/login");
+        navigate("/connexion");
     }
     return (
         <button onClick={handleLogout}>
-            Se déconncter
+            Se déconnecter
         </button>
     )
 }

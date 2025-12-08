@@ -26,16 +26,20 @@ function Login() {
     return (
         <form onSubmit={handlesubmit}>
             <h2>Se connecter</h2>
-            <label for="email">Email :</label>
-            <input type="email"
+            <label htmlFor="login-email">Email :</label>
+            <input id="login-email"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required />
-            <label for="password">Mot de passe :</label>
-            <input type="password"
+                required
+                autoComplete="userName" />
+            <label htmlFor="login-password">Mot de passe :</label>
+            <input id="login-password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required />
+                required
+                autoComplete="current-password" />
             {error && <p>{error}</p>}
             <button type="submit">Se connecter</button>
         </form>

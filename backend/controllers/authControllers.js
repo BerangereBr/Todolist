@@ -2,12 +2,13 @@ const bcrypt = require('bcrypt');
 const pool = require('../database/ddb');
 const jwt = require('jsonwebtoken');
 
-const signUp = (req, res) => {
+const signUp = async (req, res) => {
+    console.log(req.body);
     try {
         const { username, email, password } = req.body;
-        const hashed = bcrypt.hash(password, 10);
+        const hashed = await bcrypt.hash(password, 10);
 
-        const newUser = pool.query(
+        const newUser = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
             [username, email, hashed]
         );
@@ -17,7 +18,7 @@ const signUp = (req, res) => {
     }
 }
 
-const login = (req, res) => {
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const result = pool.query(
@@ -28,7 +29,7 @@ const login = (req, res) => {
         if (!user) {
             res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
         }
-        const correct = bcrypt.compare(password, user.password);
+        const correct = await bcrypt.compare(password, user.password);
         if (!correct) {
             res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
         }

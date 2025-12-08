@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Signup, Signin } from "../services/connexion";
-import { UserContext } from "./AuthContext"
+import { AuthContext } from "./AuthContext"
 
-export function UseProvider({ children }) {
+export function UserContext({ children }) {
     const [user, setUser] = useState(null)
 
     async function login(email, password) {
@@ -39,8 +39,8 @@ export function UseProvider({ children }) {
     }
 
     return (
-        <UserContext.Provider value={{ user, login, signUp, logout }}>
+        <AuthContext.Provider value={{ user, login, signUp, logout }}>
             {children}
-        </UserContext.Provider>
+        </AuthContext.Provider>
     )
 }

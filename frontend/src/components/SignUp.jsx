@@ -26,21 +26,27 @@ function SignUp() {
     return (
         <form onSubmit={handlesubmit}>
             <h2>Créer un compte</h2>
-            <label for="name">Nom</label>
-            <input type="text"
+            <label htmlFor="signup-name">Nom</label>
+            <input id="sign-upname"
+                type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                required />
-            <label for="email">Email :</label>
-            <input type="email"
+                required
+                autoComplete="username" />
+            <label htmlFor="signup-email">Email :</label>
+            <input id="email"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required />
-            <label for="password">Mot de passe :</label>
-            <input type="password"
+                required
+                autoComplete="email" />
+            <label htmlFor="signup-password">Mot de passe :</label>
+            <input id="signup-password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required />
+                required
+                autoComplete="current-password" />
             {error && <p>{error}</p>}
             <button type="submit">S'inscrire</button>
         </form>
