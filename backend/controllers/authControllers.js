@@ -21,25 +21,32 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const result = pool.query(
+        const result = await pool.query(
             'SELECT * FROM users WHERE email = $1',
             [email]
         );
         const user = result.rows[0]
         if (!user) {
-            res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
+            return res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
         }
         const correct = await bcrypt.compare(password, user.password);
         if (!correct) {
-            res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
+            return res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
         }
         const token = jwt.sign({
             id: user.id, username: user.username
         },
-            JWT_SECRET,
+            process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
-        res.status(200).json({ token });
+        res.status(200).json({
+            user: {
+                id: user.id,
+                username: user.usename,
+                email: user.email
+            },
+            token
+        });
     } catch (error) {
         res.status(500).json({ error: 'erreur serveur' });
     }
