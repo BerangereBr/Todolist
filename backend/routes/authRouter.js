@@ -1,8 +1,8 @@
 const express = reuquire('express');
-const { sign, login } = require('../controllers/authControllers')
+const { signUp, login } = require('../controllers/authControllers')
 const router = express.Router;
 
-router.post('/sign', sign);
+router.post('/sign', signUp);
 router.post('/login', login);
 
 module.exports = router

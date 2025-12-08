@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const pool = require('../database/ddb');
 const jwt = require('jsonwebtoken');
 
-const sign = (req, res) => {
+const signUp = (req, res) => {
     try {
         const { username, email, password } = req.body;
         const hashed = bcrypt.hash(password, 10);
@@ -44,4 +44,4 @@ const login = (req, res) => {
     }
 };
 
-module.exports = { sign, login };
+module.exports = { signUp, login };
