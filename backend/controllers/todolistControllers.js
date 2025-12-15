@@ -1,11 +1,14 @@
-const pool = require('../databe/db');
+const pool = require('../database/db');
 
 const createTodolist = async (req, res) => {
     const name = req.body;
-    const user = rep.params.id
+    const user = req.user.id;
+    if (!name) {
+        return res.status(400).json({ message: "Le nom est requis" });
+    }
     try {
         const result = await pool.query(
-            'INSERT INTO todolist (user_id, name) VALUES (1$, 2$) RETURNING*',
+            'INSERT INTO todolist (user_id, name) VALUES ($1, $2) RETURNING *',
             [user, name]);
         res.status(201).json(result.rows[0]);
     } catch (error) {
@@ -13,7 +16,7 @@ const createTodolist = async (req, res) => {
     }
 }
 
-const getAllTodolidts = async (req, res) => {
+const getAllTodolists = async (req, res) => {
     const userId = req.user.id
     try {
         const result = await pool.query('SELECT * FROM todolist WHERE user_id = $1 ORDER BY created_at DESC',
@@ -25,7 +28,7 @@ const getAllTodolidts = async (req, res) => {
     }
 }
 
-const getTodolidts = async (req, res) => {
+const getTodolist = async (req, res) => {
     const userId = req.user.id;
     const todolistId = req.params.id;
     try {
@@ -42,4 +45,26 @@ const getTodolidts = async (req, res) => {
     }
 }
 
-module.exports = { createTodolist, getAllTodolidts, getTodolidts }
+const deleteTodolist = async (req, res) => {
+    const todolistId = req.params.id;
+    const user = req.user.id;
+
+    if (!todolistId) {
+        res.status(400).json({ message: 'ID non trouvé' })
+    }
+    try {
+        const result = await pool.query('DELETE FROM todolist where id=$1 AND user_id=$2 RETURNING *',
+            [todolistId, user]
+        )
+        if (result.rowCount === 0) {
+            return res.status(400).json({ message: 'Todolist introuvable ou non autorisée' });
+        }
+        res.status(200).json({
+            message: 'Todolist supprimée avec succès',
+            todolist: result.rows[0]
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la suppression' })
+    }
+}
+module.exports = { createTodolist, getAllTodolists, getTodolist, deleteTodolist }

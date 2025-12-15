@@ -1,10 +1,11 @@
 const express = require('express');
-const { createTodolist, getTodolists, getAllTodolists } = require('../controllers/todolistControllers')
-const router = express.Router();
+const { createTodolist, getTodolist, getAllTodolists, deleteTodolist } = require('../controllers/todolistControllers');
+const authMiddleware = require('../middleware/authMiddleware')
+const todolistRouter = express.Router();
 
-router.post('/todolists', createTodolist);
-router.get('/todolists', getAllTodolists);
-router.get('/todolists/:id', getTodolists);
+todolistRouter.post('/', authMiddleware, createTodolist);
+todolistRouter.get('/', authMiddleware, getAllTodolists);
+todolistRouter.get('/:id', authMiddleware, getTodolist);
+todolistRouter.delete('/:id', authMiddleware, deleteTodolist)
 
-
-module.exports = router;
+module.exports = todolistRouter;
