@@ -30,10 +30,10 @@ const getAllTodolists = async (req, res) => {
 
 const getTodolist = async (req, res) => {
     const userId = req.user.id;
-    const todolistId = req.params.id;
+    const todolist_id = req.params.id;
     try {
         const result = await pool.query('SELECT * FROM todolist WHERE id = $1 AND user_id = $2',
-            [todolistId, userId]
+            [todolist_id, userId]
         );
         if (result.rows.length === 0) {
             return res.status(404).json({ message: 'Todolist non trouvée' });
@@ -46,7 +46,7 @@ const getTodolist = async (req, res) => {
 }
 
 const deleteTodolist = async (req, res) => {
-    const todolistId = req.params.id;
+    const todolist_id = req.params.id;
     const user = req.user.id;
 
     if (!todolistId) {
@@ -54,7 +54,7 @@ const deleteTodolist = async (req, res) => {
     }
     try {
         const result = await pool.query('DELETE FROM todolist where id=$1 AND user_id=$2 RETURNING *',
-            [todolistId, user]
+            [todolist_id, user]
         )
         if (result.rowCount === 0) {
             return res.status(400).json({ message: 'Todolist introuvable ou non autorisée' });
