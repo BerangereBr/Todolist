@@ -5,8 +5,29 @@ const getAuthHeaders = () => {
     return { Authorization: `Bearer ${token}` };
 };
 
-export const createTodolist = (data) => api.post('/todolists', data, { headers: getAuthHeaders() });
+export const createTodolist = async (data) => {
+    try {
+        return await api.post('/todolists', data, { headers: getAuthHeaders() })
+    } catch (error) {
+        console.log('Api createTodolist error', error);
+        throw error;
+    }
+};
 
-export const getAllTodolists = () => api.get('/todolist', { headers: getAuthHeaders() });
+export const getAllTodolists = async () => {
+    try {
+        return await api.get('/todolists', { headers: getAuthHeaders() })
+    } catch (error) {
+        console.log('Api getAllTodolists error', error);
+        throw error;
+    }
+};
 
-export const deleteTodolists = (id) => api.delete(`/todolists/${id}`, { headers: getAuthHeaders() })
+export const deleteTodolist = async (id) => {
+    try {
+        return await api.delete(`/todolists/${id}`, { headers: getAuthHeaders() })
+    } catch (error) {
+        console.log('Api deleTodolist error', error);
+        throw error;
+    }
+}

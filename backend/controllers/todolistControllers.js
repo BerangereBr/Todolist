@@ -1,7 +1,7 @@
 const pool = require('../database/db');
 
 const createTodolist = async (req, res) => {
-    const name = req.body;
+    const { name } = req.body;
     const user = req.user.id;
     if (!name) {
         return res.status(400).json({ message: "Le nom est requis" });
@@ -49,8 +49,8 @@ const deleteTodolist = async (req, res) => {
     const todolist_id = req.params.id;
     const user = req.user.id;
 
-    if (!todolistId) {
-        res.status(400).json({ message: 'ID non trouvé' })
+    if (!todolist_id) {
+        return res.status(400).json({ message: 'ID non trouvé' })
     }
     try {
         const result = await pool.query('DELETE FROM todolist where id=$1 AND user_id=$2 RETURNING *',

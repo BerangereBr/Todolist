@@ -19,7 +19,6 @@ function Login() {
             navigate("/dashboard");
         } catch (err) {
             console.log(err);
-
             setError("Email ou mot de passe incorrect.")
         }
     }

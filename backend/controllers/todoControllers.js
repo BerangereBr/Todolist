@@ -2,7 +2,7 @@ const pool = require('../database/db');
 
 const createTodo = async (req, res) => {
     const { description } = req.body;
-    const todolist_id = req.params.id;
+    const todolist_id = req.params.todolist_id;
     console.log("TODOLIST ID:", todolist_id);
 
     if (!description) {
@@ -21,7 +21,10 @@ const createTodo = async (req, res) => {
 }
 
 const getAllTodos = async (req, res) => {
-    const todolist_id = req.params.id;
+    const todolist_id = req.params.todolist_id;
+    if (!todolist_id) {
+        return res.status(400).json({ message: "ID de todolist manquant" });
+    }
     try {
         const result = await pool.query(
             'SELECT * FROM todo WHERE todolist_id = $1 ORDER BY created_at DESC',
