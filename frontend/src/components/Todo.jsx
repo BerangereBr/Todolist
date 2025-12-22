@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createTodo, getAllTodos, deleteTodo } from "../services/todo";
 import { useEffect } from "react";
+import '../styles/dashboard.scss';
 
 function Todo({ todolist_id }) {
     const [todos, setTodos] = useState([]);
@@ -37,7 +38,7 @@ function Todo({ todolist_id }) {
                 <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}></input>
                 <button type='submit'>Ajouter</button>
             </form>
-            <ul> {todos.map(t => (
+            <ul className='todo-container'> {todos.map(t => (
                 <li key={t.id}>{t.description}
                     <button onClick={() => handleDelete(t.id)}>Supprimer</button>
                 </li>

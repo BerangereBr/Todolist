@@ -6,6 +6,7 @@ import Todo from "./Todo";
 function Todolist() {
     const [todolists, setTodolists] = useState([]);
     const [name, setName] = useState('');
+    const [open, setOpen] = useState(null);
 
     useEffect(() => {
         getAllTodolists().then(res => setTodolists(res.data))
@@ -33,14 +34,22 @@ function Todolist() {
                 <input value={name} onChange={e => setName(e.target.value)}></input>
                 <button type="submit">Ajouter</button>
             </form>
-            <ul>
-                {todolists.map(todo => (
-                    <li key={todo.id}>{todo.name}
-                        <button onClick={() => handleDelete(todo.id)}>Supprimer</button>
-                        <Todo todolist_id={todo.id} />
-                    </li>
-                ))}
-            </ul>
+            <div className="todolists-container">
+                <ul className="todolists-names">
+                    {todolists.map(todo => (
+                        <li key={todo.id} className="todolist-list">
+
+                            <button className="todolist-name-item" onClick={() => setOpen(todo.id)}>
+                                {todo.name}
+                            </button>
+                            <button onClick={() => handleDelete(todo.id)}>Supprimer</button>
+                        </li>
+                    ))}
+                </ul>
+                <div className="todo-container">
+                    {open && <Todo todolist_id={open} />}
+                </div>
+            </div>
         </div>
     )
 }

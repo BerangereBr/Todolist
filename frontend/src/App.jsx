@@ -8,7 +8,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Connexion />} />
-
         <Route path='/connexion' element={<Connexion />} />
         <Route path='/dashboard' element={<Dashboard />} />
       </Routes>

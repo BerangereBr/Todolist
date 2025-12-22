@@ -23,24 +23,28 @@ function Login() {
         }
     }
     return (
-        <form onSubmit={handlesubmit}>
-            <h2>Se connecter</h2>
-            <label htmlFor="login-email">Email :</label>
-            <input id="login-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                autoComplete="userName" />
-            <label htmlFor="login-password">Mot de passe :</label>
-            <input id="login-password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                autoComplete="current-password" />
-            {error && <p>{error}</p>}
-            <button type="submit">Se connecter</button>
+        <form onSubmit={handlesubmit} className="login-container">
+            <div className="login-title">
+                <h2>Se connecter</h2>
+            </div>
+            <div className="login-form">
+                <label htmlFor="login-email">Email :</label>
+                <input id="login-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoComplete="userName" />
+                <label htmlFor="login-password">Mot de passe :</label>
+                <input id="login-password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    autoComplete="current-password" />
+                {error && <p>{error}</p>}
+                <button type="submit">Se connecter</button>
+            </div>
         </form>
     )
 }
