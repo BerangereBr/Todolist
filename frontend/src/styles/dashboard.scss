@@ -12,8 +12,28 @@
     margin: 0;
 }
 
+.todolist-form {
+    margin: 20px 0;
+
+    input {
+        border-radius: 10px;
+        border: 1px solid $blue-300;
+        padding: 8px;
+        margin-right: 10px;
+    }
+
+    button {
+        cursor: pointer;
+        color: white;
+        background-color: $blue-900;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+    }
+}
+
 .dashboard-container {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
 }
 
@@ -34,25 +54,26 @@
 
         .todolist-list {
             margin-top: 20px;
-            padding: 20px;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 80%;
 
-            &:hover {
-                background-color: $blue-200;
-                border-radius: 10px;
-            }
-
             .todolist-name-item {
                 background: none;
+                padding: 20px;
                 border: none;
                 font-size: 16px;
                 cursor: pointer;
                 color: $blue-900;
                 text-align: left;
                 width: 100%;
+
+                &:hover {
+                    background-color: $blue-200;
+                    border-radius: 10px;
+                }
             }
 
             button {

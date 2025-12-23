@@ -39,7 +39,9 @@ function Todo({ todolist_id }) {
                 <button type='submit'>Ajouter</button>
             </form>
             <ul className='todo-container'> {todos.map(t => (
-                <li key={t.id}>{t.description}
+                <li key={t.id}>
+                    <input type="checkbox"></input>
+                    {t.description}
                     <button onClick={() => handleDelete(t.id)}>Supprimer</button>
                 </li>
             ))}

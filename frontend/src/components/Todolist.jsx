@@ -27,18 +27,19 @@ function Todolist() {
 
     return (
         <div>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                handleCreate();
-            }}>
-                <input value={name} onChange={e => setName(e.target.value)}></input>
-                <button type="submit">Ajouter</button>
-            </form>
             <div className="todolists-container">
+
                 <ul className="todolists-names">
+                    <form className="todolist-form"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            handleCreate();
+                        }}>
+                        <input value={name} onChange={e => setName(e.target.value)}></input>
+                        <button type="submit">Ajouter</button>
+                    </form>
                     {todolists.map(todo => (
                         <li key={todo.id} className="todolist-list">
-
                             <button className="todolist-name-item" onClick={() => setOpen(todo.id)}>
                                 {todo.name}
                             </button>

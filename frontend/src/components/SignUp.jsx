@@ -29,7 +29,7 @@ function SignUp() {
                 <h2>Créer un compte</h2>
             </div>
             <div className="signup-form">
-                <label htmlFor="signup-name">Nom</label>
+                <label htmlFor="signup-name">Nom :</label>
                 <input id="signup-name"
                     type="text"
                     value={name}
