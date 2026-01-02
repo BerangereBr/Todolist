@@ -57,15 +57,14 @@ function Todo({ todolist_id }) {
     return (
         <>
             <form onSubmit={(e) => { e.preventDefault(); handleCreate() }} className="todo-form">
-                <label className="todo-form-new">Nouvelle tâche</label>
-                <div className="todo-form-width">
-                    <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}></input>
-                    <button type='submit' className="todo-form-btn">Ajouter</button>
-                </div>
+                <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Nouvelle tâche..."></input>
+                <button type='submit' className="todo-form-btn">
+                    <span className="add-text">Ajouter</span>
+                </button>
             </form>
-            <ul className='todo-container-ul'>
+            <div className='todo-container-list'>
                 {sortedTodos.map(t => (
-                    <li key={t.id}>
+                    <div key={t.id} className="todo-item">
                         <input type="checkbox"
                             className="todo-checkbox"
                             checked={t.is_completed}
@@ -81,9 +80,9 @@ function Todo({ todolist_id }) {
                                 onMouseOut={e => (e.currentTarget.src = deleteBlue)}
                             />
                         </button>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </>
     )
 }

@@ -21,226 +21,236 @@
 }
 
 .header {
-    background-color: $blue-900;
     color: white;
-}
 
-.header-title {
-    font-family: 'Lora', serif;
-    text-align: center;
-    padding: 50px;
-    margin: 0;
-}
-
-.todolist-form {
-    margin: 20px 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 70% 30%;
-    align-items: center;
-    margin-left: 20px;
-
-    input {
-        border-radius: 10px;
-        border: 1px solid $blue-300;
-        height: 40px;
-
-        @media (max-width:724px) {
-            height: 30px;
-        }
-
-        @media (max-width:600px) {
-            height: 20px;
-        }
+    .header-title {
+        font-family: 'Lora', serif;
+        text-align: center;
+        padding: 50px;
+        margin: 0;
     }
-
-    .add-btn {
-        border: none;
-        background: none;
-        cursor: pointer;
-    }
-
-    /* Texte visible par défaut (> 900px) */
-    .add-text {
-        display: inline;
-        color: $blue-900;
-        padding: 5px 10px;
-
-        &:hover {
-            color: white;
-            background-color: $blue-900;
-            border-radius: 10px;
-        }
-    }
-
-    @media (max-width: 900px) {
-        .add-text {
-            display: none;
-        }
-
-        .add-btn {
-            margin-left: 10px;
-            width: 40px;
-            height: 40px;
-            background-image: url("../assets/images/ajouter.png");
-            background-size: contain;
-            background-repeat: no-repeat;
-
-            @media (max-width:724px) {
-                width: 30px;
-                height: 30px;
-            }
-
-            @media (max-width:600px) {
-                margin-left: 5px;
-                width: 25px;
-                height: 25px;
-            }
-        }
-
-        .add-btn:hover {
-            background-image: url("../assets/images/ajouter-hover.png");
-        }
-    }
-
-
 }
 
 .dashboard-container {
     width: 100%;
-    min-height: 100vh;
-}
+    display: flex;
+    justify-content: center;
 
-.todolists-container {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    width: 100%;
+    .todolists-container {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        width: 80%;
 
-    .todolists-names {
+        .todolists-names {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 8px;
+
+            .todolist-form {
+                margin: 20px 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 70% 30%;
+                align-items: center;
+
+                input {
+                    border-radius: 10px;
+                    border: 1px solid $blue-300;
+                    height: 30px;
+
+                    @media (max-width:724px) {
+                        height: 30px;
+                    }
+
+                    @media (max-width:600px) {
+                        height: 20px;
+                    }
+                }
+
+                .add-btn {
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                }
+
+                /* Texte visible par défaut (> 900px) */
+                .add-text {
+                    display: inline;
+                    color: $blue-900;
+                    padding: 8px;
+
+                    &:hover {
+                        color: white;
+                        background-color: $blue-900;
+                        border-radius: 10px;
+                    }
+                }
+
+                @media (max-width: 900px) {
+                    .add-text {
+                        display: none;
+                    }
+
+                    .add-btn {
+                        margin-left: 10px;
+                        width: 30px;
+                        height: 30px;
+                        background-image: url("../assets/images/add-todolist.png");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+
+
+                        @media (max-width:600px) {
+                            margin-left: 5px;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+
+                    .add-btn:hover {
+                        background-image: url("../assets/images/add-todolist-hover.png");
+                    }
+                }
+            }
+
+            .todolist-list {
+                margin-top: 20px;
+                padding: 10px;
+                display: grid;
+                grid-template-columns: 70% 30%;
+                align-items: center;
+                width: 100%;
+
+                .todolist-name-item {
+                    background: none;
+                    padding: 20px;
+                    border: none;
+                    font-size: 16px;
+                    cursor: pointer;
+                    color: $blue-900;
+                    text-align: center;
+                    width: 100%;
+
+                    &:hover {
+                        background-color: $blue-200;
+                        border-radius: 10px;
+                    }
+                }
+
+                .todolist-delete-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    padding: 5px;
+
+                    .delete-icon {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .todo-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         list-style: none;
         padding: 0;
-        margin: 0;
-        height: 100vh;
-        background-color: $blue-soft-bg;
+        margin: 20px;
 
-        .todolist-list {
-            margin-top: 20px;
-            padding: 10px;
-            display: grid;
-            grid-template-columns: 70% 30%;
+        .todo-form {
+            display: flex;
+            justify-content: center;
             align-items: center;
             width: 100%;
 
-            .todolist-name-item {
-                background: none;
-                padding: 20px;
-                border: none;
-                font-size: 16px;
-                cursor: pointer;
-                color: $blue-900;
-                text-align: left;
+            input {
+                border-radius: 10px;
+                border: 2px solid $blue-300;
+                padding: 8px;
+                margin-right: 10px;
+                width: 80%;
+            }
 
-                &:hover {
-                    background-color: $blue-200;
-                    border-radius: 10px;
+            .todo-form-btn {
+                border: none;
+                background: none;
+                cursor: pointer;
+
+
+                /* Texte visible par défaut (> 900px) */
+                .add-text {
+                    display: inline;
+                    color: white;
+                    padding: 8px;
+
+                    &:hover {
+                        color: $blue-900;
+                        background-color: white;
+                        border-radius: 10px;
+                    }
                 }
             }
 
-            .todolist-delete-btn {
+            @media (max-width: 900px) {
+                .todo-form-btn {
+                    .add-text {
+                        display: none;
+                    }
+
+                    width: 30px;
+                    height: 30px;
+                    background-image: url("../assets/images/add-todo.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+
+                    &:hover {
+                        background-image: url("../assets/images/add-todo-hover.png");
+                    }
+                }
+            }
+        }
+
+        .todo-container-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+
+            .todo-item {
                 display: flex;
-                justify-content: center;
+                justify-content: space-between;
+                background-color: white;
                 align-items: center;
-                cursor: pointer;
-                background: none;
-                border: none;
-                padding: 5px;
+                padding: 8px;
+                text-align: center;
+                border-radius: 10px;
+                margin-top: 20px;
 
-                .delete-icon {
-                    width: 30px;
-                    height: 30px;
+                .todo-checkbox {
+                    cursor: pointer;
                 }
 
-            }
-        }
-    }
-}
+                button {
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 8px;
 
-.todo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 20px;
-
-    .todo-form {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin: 20px 0;
-
-        @media (max-width:650px) {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .todo-form-new {
-            margin-right: 10px;
-        }
-
-        input {
-            border-radius: 10px;
-            border: 1px solid $blue-300;
-            padding: 8px;
-            margin-right: 10px;
-        }
-
-        .todo-form-btn {
-            border: none;
-            background: none;
-            cursor: pointer;
-            color: $blue-900;
-            padding: 5px 10px;
-
-            &:hover {
-                color: white;
-                background-color: $blue-900;
-                border-radius: 10px;
-            }
-        }
-    }
-
-    .todo-container-ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        max-width: 500px;
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            text-align: center;
-
-            .todo-checkbox {
-                cursor: pointer;
-            }
-
-            button {
-                cursor: pointer;
-                background: none;
-                border: none;
-                border-radius: 10px;
-                padding: 5px 10px;
-
-                .delete-icon {
-                    width: 30px;
-                    height: 30px;
+                    .delete-icon {
+                        width: 20px;
+                        height: 20px;
+                    }
                 }
             }
         }

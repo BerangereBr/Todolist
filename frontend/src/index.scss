@@ -1,7 +1,9 @@
+@use './styles/variables' as *;
+
 html,
 body,
 #root {
-    height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    background-color: $blue-900;
 }

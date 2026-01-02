@@ -7,9 +7,7 @@ function Dashboard() {
         <>
             <Header />
             <main className="dashboard-container">
-                <div>
-                    <Todolist />
-                </div>
+                <Todolist />
             </main>
         </>
     )

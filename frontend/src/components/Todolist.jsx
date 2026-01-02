@@ -28,22 +28,21 @@ function Todolist() {
     }
 
     return (
-        <div>
+        <>
             <div className="todolists-container">
-
-                <ul className="todolists-names">
+                <div className="todolists-names">
                     <form className="todolist-form"
                         onSubmit={(e) => {
                             e.preventDefault();
                             handleCreate();
                         }}>
-                        <input value={name} onChange={e => setName(e.target.value)}></input>
-                        <button type="submit" className="add-btn">
+                        <input value={name} onChange={e => setName(e.target.value)} placeholder="Nouvelle todolist..."></input>
+                        <button type="submit" className="add-btn" aria-label="ajouter-todolist">
                             <span className="add-text">Ajouter</span>
                         </button>
                     </form>
                     {todolists.map(todo => (
-                        <li key={todo.id} className="todolist-list">
+                        <div key={todo.id} className="todolist-list">
                             <button className="todolist-name-item" onClick={() => setOpen(todo.id)}>
                                 {todo.name}
                             </button>
@@ -56,14 +55,14 @@ function Todolist() {
                                     onMouseOut={e => (e.currentTarget.src = deleteBlue)}
                                 />
                             </button>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
                 <div className="todo-container">
                     {open && <Todo todolist_id={open} />}
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
