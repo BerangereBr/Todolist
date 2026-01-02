@@ -24,6 +24,15 @@ export const getAllTodos = async (todolist_id) => {
     }
 }
 
+export const checkTodo = async (todolist_id, todo_id) => {
+    try {
+        return await api.put(`/todolists/${todolist_id}/todos/${todo_id}`, {}, { headers: getAuthHeaders() })
+    } catch (error) {
+        console.log('Api checkTodo error', error);
+        throw error;
+    }
+}
+
 export const deleteTodo = async (todolist_id, todo_id) => {
     try {
         return await api.delete(`/todolists/${todolist_id}/todos/${todo_id}`, { headers: getAuthHeaders() })

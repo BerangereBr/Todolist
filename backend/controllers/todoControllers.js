@@ -35,6 +35,26 @@ const getAllTodos = async (req, res) => {
     }
 }
 
+const checkTodo = async (req, res) => {
+    const { todolist_id, todo_id } = req.params;
+    const user_id = req.user.id;
+    if (!todo_id || !todolist_id) {
+        return res.status(400).json({ message: "ID manquant" });
+    }
+    try {
+        const result = await
+            pool.query(
+                'UPDATE todo t SET is_completed = NOT t.is_completed FROM todolist tl WHERE t.id=$1 AND t.todolist_id=$2 AND tl.id = t.todolist_id AND tl.user_id = $3 RETURNING t.*',
+                [todo_id, todolist_id, user_id]);
+        res.status(200).json({
+            message: 'Todo mise à jour avec succès',
+            todo: result.rows[0],
+        })
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la mise à jour' })
+    }
+}
+
 const deleteTodo = async (req, res) => {
     const { todolist_id, todo_id } = req.params;
     const user_id = req.user.id;
@@ -54,4 +74,4 @@ const deleteTodo = async (req, res) => {
         res.status(500).json({ message: 'Erreur lors de la suppression' })
     }
 }
-module.exports = { createTodo, getAllTodos, deleteTodo }
+module.exports = { createTodo, getAllTodos, checkTodo, deleteTodo }
