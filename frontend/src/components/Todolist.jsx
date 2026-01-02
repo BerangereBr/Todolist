@@ -2,6 +2,8 @@ import { useState } from "react";
 import { getAllTodolists, createTodolist, deleteTodolist } from "../services/todolist";
 import { useEffect } from "react";
 import Todo from "./Todo";
+import deleteHover from '../assets/images/delete-blue-hover.png';
+import deleteBlue from '../assets/images/delete-blue.png';
 
 function Todolist() {
     const [todolists, setTodolists] = useState([]);
@@ -36,14 +38,24 @@ function Todolist() {
                             handleCreate();
                         }}>
                         <input value={name} onChange={e => setName(e.target.value)}></input>
-                        <button type="submit">Ajouter</button>
+                        <button type="submit" className="add-btn">
+                            <span className="add-text">Ajouter</span>
+                        </button>
                     </form>
                     {todolists.map(todo => (
                         <li key={todo.id} className="todolist-list">
                             <button className="todolist-name-item" onClick={() => setOpen(todo.id)}>
                                 {todo.name}
                             </button>
-                            <button onClick={() => handleDelete(todo.id)}>Supprimer</button>
+                            <button onClick={() => handleDelete(todo.id)} className="todolist-delete-btn">
+                                <img
+                                    src={deleteBlue}
+                                    alt="delete"
+                                    className="delete-icon"
+                                    onMouseOver={e => (e.currentTarget.src = deleteHover)}
+                                    onMouseOut={e => (e.currentTarget.src = deleteBlue)}
+                                />
+                            </button>
                         </li>
                     ))}
                 </ul>
