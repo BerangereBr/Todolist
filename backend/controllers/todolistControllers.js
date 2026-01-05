@@ -50,14 +50,14 @@ const deleteTodolist = async (req, res) => {
     const user = req.user.id;
 
     if (!todolist_id) {
-        return res.status(400).json({ message: 'ID non trouvé' })
+        return res.status(404).json({ message: 'ID non trouvé' })
     }
     try {
         const result = await pool.query('DELETE FROM todolist where id=$1 AND user_id=$2 RETURNING *',
             [todolist_id, user]
         )
         if (result.rowCount === 0) {
-            return res.status(400).json({ message: 'Todolist introuvable ou non autorisée' });
+            return res.status(404).json({ message: 'Todolist introuvable ou non autorisée' });
         }
         res.status(200).json({
             message: 'Todolist supprimée avec succès',

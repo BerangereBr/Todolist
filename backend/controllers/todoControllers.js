@@ -23,7 +23,7 @@ const createTodo = async (req, res) => {
 const getAllTodos = async (req, res) => {
     const todolist_id = req.params.todolist_id;
     if (!todolist_id) {
-        return res.status(400).json({ message: "ID de todolist manquant" });
+        return res.status(404).json({ message: "ID de todolist manquant" });
     }
     try {
         const result = await pool.query(
@@ -39,7 +39,7 @@ const checkTodo = async (req, res) => {
     const { todolist_id, todo_id } = req.params;
     const user_id = req.user.id;
     if (!todo_id || !todolist_id) {
-        return res.status(400).json({ message: "ID manquant" });
+        return res.status(404).json({ message: "ID manquant" });
     }
     try {
         const result = await
@@ -60,7 +60,7 @@ const deleteTodo = async (req, res) => {
     const user_id = req.user.id;
 
     if (!todo_id || !todolist_id) {
-        return res.status(400).json({ message: "ID manquant" });
+        return res.status(404).json({ message: "ID manquant" });
     }
     try {
         const result = await pool.query(
