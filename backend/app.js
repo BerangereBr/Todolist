@@ -6,7 +6,10 @@ const todoRouter = require('./routes/todoRouter')
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://todolist-ten-tan.vercel.app/',
+    credentials: true
+}));
 
 app.use('/api/auth', authRouter);
 app.use('/api/todolists', todolistsRouter);
