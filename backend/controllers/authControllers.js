@@ -20,6 +20,10 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
+
+        console.log('JWT_SECRET:', !!process.env.JWT_SECRET);
+        console.log('DATABASE_URL:', !!process.env.DATABASE_URL);
+
         const result = await pool.query(
             'SELECT * FROM users WHERE email = $1',
             [email]
@@ -47,6 +51,7 @@ const login = async (req, res) => {
             token
         });
     } catch (error) {
+        console.error('LOGIN ERROR:', error)
         res.status(500).json({ error: 'erreur serveur' });
     }
 };
