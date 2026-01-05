@@ -64,7 +64,7 @@ function Todo({ todolist_id }) {
             </form>
             <div className='todo-container-list'>
                 {sortedTodos.map(t => (
-                    <div key={t.id} className="todo-item">
+                    <div key={t.id} className={`todo-item ${t.is_completed ? "completed" : ""}`}>
                         <input type="checkbox"
                             className="todo-checkbox"
                             checked={t.is_completed}
