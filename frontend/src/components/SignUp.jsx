@@ -37,7 +37,7 @@ function SignUp() {
                     required
                     autoComplete="username" />
                 <label htmlFor="signup-email">Email :</label>
-                <input id="email"
+                <input id="signup-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
