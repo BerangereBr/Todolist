@@ -24,6 +24,9 @@ function Todolist() {
     const handleDelete = (id) => {
         deleteTodolist(id).then(() => {
             setTodolists(todolists.filter(t => t.id !== id))
+            if (open === id) {
+                setOpen(null);
+            }
         })
     }
 
@@ -42,7 +45,7 @@ function Todolist() {
                         </button>
                     </form>
                     {todolists.map(todo => (
-                        <div key={todo.id} className="todolist-list">
+                        <div key={todo.id} className={`todolist-list${open === todo.id ? " active" : ""}`}>
                             <button className="todolist-name-item" onClick={() => setOpen(todo.id)}>
                                 {todo.name}
                             </button>

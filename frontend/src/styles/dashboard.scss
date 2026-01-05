@@ -122,7 +122,17 @@
                 display: grid;
                 grid-template-columns: 70% 30%;
                 align-items: center;
-                width: 100%;
+                width: 80%;
+
+                &:hover {
+                    background-color: $blue-200;
+                    border-radius: 10px;
+                }
+
+                &.active {
+                    background-color: $blue-200;
+                    border-radius: 10px;
+                }
 
                 .todolist-name-item {
                     background: none;
@@ -133,11 +143,6 @@
                     color: $blue-900;
                     text-align: center;
                     width: 100%;
-
-                    &:hover {
-                        background-color: $blue-200;
-                        border-radius: 10px;
-                    }
                 }
 
                 .todolist-delete-btn {
