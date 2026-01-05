@@ -7,10 +7,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://todolist-ten-tan.vercel.app',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin: '*',
 }));
 
 app.use('/api/auth', authRouter);
