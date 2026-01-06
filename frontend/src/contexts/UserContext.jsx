@@ -21,9 +21,9 @@ export function UserContext({ children }) {
         }
     }
 
-    async function signUp(name, email, password) {
+    async function signUp(username, email, password) {
         try {
-            const res = await Signup({ name, email, password });
+            const res = await Signup({ username, email, password });
             setUser(res.data.user);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));

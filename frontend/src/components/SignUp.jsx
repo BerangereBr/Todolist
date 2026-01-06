@@ -3,7 +3,7 @@ import { useUser } from "../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-    const [userName, setuserName] = useState("");
+    const [username, setusername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -15,7 +15,7 @@ function SignUp() {
         e.preventDefault();
         setError();
         try {
-            await signUp(userName, email, password);
+            await signUp(username, email, password);
             navigate("/dashboard");
         } catch (err) {
             console.log(err);
@@ -32,8 +32,8 @@ function SignUp() {
                 <label htmlFor="signup-name">Nom :</label>
                 <input id="signup-name"
                     type="text"
-                    value={userName}
-                    onChange={(e) => setuserName(e.target.value)}
+                    value={username}
+                    onChange={(e) => setusername(e.target.value)}
                     required
                     autoComplete="username" />
                 <label htmlFor="signup-email">Email :</label>
