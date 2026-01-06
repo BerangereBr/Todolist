@@ -13,6 +13,7 @@ const signUp = async (req, res) => {
         );
         res.status(200).json(newUser.rows[0]);
     } catch (error) {
+        console.error('SIGNUP ERROR:', error);
         res.status(500).json({ error: 'erreur serveur' });
     }
 }
