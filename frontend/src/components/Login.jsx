@@ -34,7 +34,7 @@ function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    autoComplete="userName" />
+                    autoComplete="username" />
                 <label htmlFor="login-password">Mot de passe :</label>
                 <input id="login-password"
                     type="password"
