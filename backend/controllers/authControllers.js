@@ -6,7 +6,7 @@ const signUp = async (req, res) => {
     ;
     try {
         const { username, email, password } = req.body;
-        console.log('Destructured:', { userName, email, password });
+        console.log('Destructured:', { username, email, password });
         const hashed = await bcrypt.hash(password, 10);
 
         const newUser = await pool.query(
