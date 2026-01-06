@@ -3,15 +3,15 @@ const pool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
-    console.log('SIGNUP REQUEST BODY:', req.body);
+    ;
     try {
-        const { userName, email, password } = req.body;
+        const { name, email, password } = req.body;
         console.log('Destructured:', { userName, email, password });
         const hashed = await bcrypt.hash(password, 10);
 
         const newUser = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
-            [userName, email, hashed]
+            [name, email, hashed]
         );
         res.status(200).json(newUser.rows[0]);
     } catch (error) {
