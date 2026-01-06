@@ -3,6 +3,7 @@ const pool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
+    console.log('SIGNUP REQUEST BODY:', req.body);
     try {
         const { userName, email, password } = req.body;
         const hashed = await bcrypt.hash(password, 10);
