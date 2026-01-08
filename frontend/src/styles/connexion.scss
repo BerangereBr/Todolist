@@ -7,6 +7,12 @@
     width: 100vw;
     height: 100vh;
     background-color: $blue-900;
+
+    @media (max-width:680px) {
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 20px;
+    }
 }
 
 .login-container,

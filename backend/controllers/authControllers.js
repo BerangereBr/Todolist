@@ -6,16 +6,30 @@ const signUp = async (req, res) => {
     ;
     try {
         const { username, email, password } = req.body;
-        console.log('Destructured:', { username, email, password });
         const hashed = await bcrypt.hash(password, 10);
 
         const newUser = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
             [username, email, hashed]
         );
-        res.status(200).json(newUser.rows[0]);
+
+        const user = result.rows[0];
+
+        const token = jwt.sign(
+            { id: user.id, username: user.username },
+            process.env.JWT_SECRET,
+            { expiresIn: '2h' }
+        );
+
+        res.status(200).json({
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email
+            },
+            token
+        });
     } catch (error) {
-        console.error('SIGNUP ERROR:', error);
         res.status(500).json({ error: 'erreur serveur' });
     }
 }
@@ -35,9 +49,8 @@ const login = async (req, res) => {
         if (!correct) {
             return res.status(400).json({ error: "Utilisateur ou mot de passe incorrect" });
         }
-        const token = jwt.sign({
-            id: user.id, username: user.username
-        },
+        const token = jwt.sign(
+            { id: user.id, username: user.username },
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
         );
