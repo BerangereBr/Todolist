@@ -8,7 +8,7 @@ const createTodolist = async (req, res) => {
     }
     try {
         const result = await pool.query(
-            'INSERT INTO todolist (user_id, title) VALUES ($1, $2) RETURNING *',
+            'INSERT INTO todolist (user_id, name) VALUES ($1, $2) RETURNING *',
             [user, name]);
         res.status(201).json(result.rows[0]);
     } catch (error) {
