@@ -3,12 +3,12 @@ const pool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
-    ;
+
     try {
         const { username, email, password } = req.body;
         const hashed = await bcrypt.hash(password, 10);
 
-        const newUser = await pool.query(
+        const result = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
             [username, email, hashed]
         );
@@ -32,7 +32,7 @@ const signUp = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'erreur serveur' });
     }
-}
+};
 
 const login = async (req, res) => {
     try {
