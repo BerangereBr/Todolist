@@ -14,7 +14,7 @@ function Login() {
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        setError();
+        setError("");
         setLoading(true);
 
         try {

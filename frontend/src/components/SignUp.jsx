@@ -1,26 +1,35 @@
 import { useState } from "react";
 import { useUser } from "../hooks/useUser";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 function SignUp() {
-    const [username, setusername] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const { signUp } = useUser();
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        setError();
+        setError("");
+        setLoading(true);
+
         try {
             await signUp(username, email, password);
             navigate("/dashboard");
         } catch (err) {
             console.log(err);
             setError("Impossible de créer le compte")
+        } finally {
+            setLoading(false);
         }
+    }
+    if (loading) {
+        return <Loading />;
     }
 
     return (
@@ -33,25 +42,28 @@ function SignUp() {
                 <input id="signup-name"
                     type="text"
                     value={username}
-                    onChange={(e) => setusername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value)}
                     required
-                    autoComplete="username" />
+                    autoComplete="username"
+                    disabled={loading} />
                 <label htmlFor="signup-email">Email :</label>
                 <input id="signup-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    autoComplete="email" />
+                    autoComplete="email"
+                    disabled={loading} />
                 <label htmlFor="signup-password">Mot de passe :</label>
                 <input id="signup-password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    autoComplete="current-password" />
+                    autoComplete="current-password"
+                    disabled={loading} />
                 {error && <p>{error}</p>}
-                <button type="submit">S'inscrire</button>
+                <button type="submit" disabled={loading}>S'inscrire</button>
             </div>
         </form>
     )
