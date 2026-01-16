@@ -1,6 +1,6 @@
 import '../styles/loading.scss';
 
-function loading() {
+function Loading() {
     return (
         <div className="loading-container">
             <div className="spinner"></div>
@@ -9,4 +9,4 @@ function loading() {
     );
 }
 
-export default loading;
+export default Loading;
