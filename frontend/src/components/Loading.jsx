@@ -1,3 +1,5 @@
+import '../styles/Loading.css';
+
 function loading() {
     return (
         <div className="loading-container">
