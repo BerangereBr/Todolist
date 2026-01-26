@@ -17,12 +17,6 @@
         &:hover {
             background-color: $blue-200;
         }
-
-        @media (max-width:576px) {
-            background-color: none;
-            padding: 0;
-            color: none;
-        }
     }
 }
 
