@@ -8,7 +8,7 @@
     padding: 5px 10px;
 
     @media (max-width:576px) {
-        background-color: none;
+        background-color: $blue-900;
         padding: 0;
         color: none;
     }
