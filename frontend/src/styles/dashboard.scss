@@ -5,18 +5,8 @@
     top: 20px;
     right: 20px;
 
-    button {
-        cursor: pointer;
-        color: white;
-        background-color: $blue-soft-bg;
-        color: $blue-900;
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
-
-        &:hover {
-            background-color: $blue-200;
-        }
+    button:hover {
+        background-color: $blue-200;
     }
 }
 
