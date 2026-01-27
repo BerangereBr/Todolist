@@ -2,8 +2,8 @@ import { useState } from "react";
 import { getAllTodolists, createTodolist, deleteTodolist } from "../services/todolist";
 import { useEffect } from "react";
 import Todo from "./Todo";
-import deleteHover from '../assets/images/delete-blue-hover.png';
-import deleteBlue from '../assets/images/delete-blue.png';
+// import deleteHover from '../assets/images/delete-hover.png';
+// import deleteBin from '../assets/images/delete.png';
 
 function Todolist() {
     const [todolists, setTodolists] = useState([]);
@@ -50,13 +50,14 @@ function Todolist() {
                                 {todo.name}
                             </button>
                             <button onClick={() => handleDelete(todo.id)} className="todolist-delete-btn">
-                                <img
-                                    src={deleteBlue}
+                                <span className="delete-icon"></span>
+                                {/* <img
+                                    src={deleteBin}
                                     alt="delete"
                                     className="delete-icon"
                                     onMouseOver={e => (e.currentTarget.src = deleteHover)}
-                                    onMouseOut={e => (e.currentTarget.src = deleteBlue)}
-                                />
+                                    onMouseOut={e => (e.currentTarget.src = deleteBin)}
+                                /> */}
                             </button>
                         </div>
                     ))}

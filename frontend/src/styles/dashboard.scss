@@ -1,41 +1,28 @@
 @use './variables' as *;
 
-.btn-logout-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-
-    button:hover {
-        background-color: $blue-200;
-    }
-}
-
 .header {
-    color: white;
 
     .header-title {
         font-family: 'Lora', serif;
         text-align: center;
         padding: 50px;
         margin: 0;
+        color: $title-color;
     }
 }
 
 .dashboard-container {
-    width: 100%;
     display: flex;
     justify-content: center;
+    width: 100%;
 
     .todolists-container {
         display: grid;
-        grid-template-columns: 30% 70%;
-        width: 80%;
+        grid-template-columns: 35% 60%;
+        width: 95%;
+        gap: 20px;
 
-        @media (max-width:724px) {
-            grid-template-columns: 40% 60%;
-        }
-
-        @media (max-width:600px) {
+        @media (max-width:720px) {
             display: flex;
             flex-direction: column;
         }
@@ -44,33 +31,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: white;
+            background-color: $bandeau;
             border-radius: 10px;
+            box-shadow: 0px 4px 6px #5B5B5B;
             padding: 8px;
 
             .todolist-form {
                 margin: 20px 0;
                 width: 100%;
-                display: grid;
-                grid-template-columns: 70% 30%;
+                display: flex;
+                justify-content: center;
                 align-items: center;
-
-                @media (max-width:576px) {
-                    margin: 10px 0;
-                }
 
                 input {
                     border-radius: 10px;
-                    border: 1px solid $blue-300;
+                    border: 1px solid $border;
                     height: 30px;
+                    width: 60%;
 
-                    @media (max-width:724px) {
-                        height: 30px;
-                    }
-
-                    @media (max-width:600px) {
-                        height: 20px;
-                    }
                 }
 
                 .add-btn {
@@ -81,13 +59,13 @@
 
                 /* Texte visible par défaut (> 900px) */
                 .add-text {
+                    margin-left: 15px;
                     display: inline;
-                    color: $blue-900;
                     padding: 8px;
 
                     &:hover {
                         color: white;
-                        background-color: $blue-900;
+                        background-color: $title-color;
                         border-radius: 10px;
                     }
                 }
@@ -98,19 +76,12 @@
                     }
 
                     .add-btn {
-                        margin-left: 10px;
+                        margin-left: 15px;
                         width: 30px;
                         height: 30px;
                         background-image: url("../assets/images/add-todolist.png");
                         background-size: contain;
                         background-repeat: no-repeat;
-
-
-                        @media (max-width:600px) {
-                            margin-left: 5px;
-                            width: 25px;
-                            height: 25px;
-                        }
                     }
 
                     .add-btn:hover {
@@ -121,20 +92,44 @@
 
             .todolist-list {
                 margin-top: 20px;
-                padding: 10px;
-                display: grid;
-                grid-template-columns: 70% 30%;
+                padding: 5px;
+                display: flex;
+                justify-content: space-between;
                 align-items: center;
                 width: 80%;
 
                 &:hover {
-                    background-color: $blue-200;
+                    background-color: $todolist-name-hover;
                     border-radius: 10px;
+
+                    .todolist-name-item {
+                        color: white;
+                    }
+
+                    .todolist-delete-btn {
+                        .delete-icon {
+                            background-image: url("../assets/images/delete-active.png");
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
+                    }
                 }
 
                 &.active {
-                    background-color: $blue-200;
+                    background-color: $todolist-name-hover;
                     border-radius: 10px;
+
+                    .todolist-name-item {
+                        color: white;
+                    }
+
+                    .todolist-delete-btn {
+                        .delete-icon {
+                            background-image: url("../assets/images/delete-active.png");
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
+                    }
                 }
 
                 @media (max-width:576px) {
@@ -147,7 +142,6 @@
                     border: none;
                     font-size: 16px;
                     cursor: pointer;
-                    color: $blue-900;
                     text-align: center;
                     width: 100%;
                 }
@@ -159,12 +153,18 @@
                     cursor: pointer;
                     background: none;
                     border: none;
-                    width: 20px;
-                    height: 20px;
 
                     .delete-icon {
                         width: 20px;
                         height: 20px;
+                        background-image: url("../assets/images/delete.png");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+
+                        &:hover {
+                            transform: scale(1.4);
+                            transition: transform 0.2s ease;
+                        }
                     }
 
                 }
@@ -178,7 +178,6 @@
         align-items: center;
         list-style: none;
         padding: 0;
-        margin: 20px;
 
         .todo-form {
             display: flex;
@@ -188,7 +187,7 @@
 
             input {
                 border-radius: 10px;
-                border: 2px solid $blue-300;
+                border: 2px solid $border;
                 padding: 8px;
                 margin-right: 10px;
                 width: 80%;
@@ -203,12 +202,11 @@
                 /* Texte visible par défaut (> 900px) */
                 .add-text {
                     display: inline;
-                    color: white;
                     padding: 8px;
 
                     &:hover {
-                        color: $blue-900;
-                        background-color: white;
+                        color: white;
+                        background-color: $title-color;
                         border-radius: 10px;
                     }
                 }
@@ -222,12 +220,12 @@
 
                     width: 30px;
                     height: 30px;
-                    background-image: url("../assets/images/add-todo.png");
+                    background-image: url("../assets/images/add-todolist.png");
                     background-size: contain;
                     background-repeat: no-repeat;
 
                     &:hover {
-                        background-image: url("../assets/images/add-todo-hover.png");
+                        background-image: url("../assets/images/add-todolist-hover.png");
                     }
                 }
             }
@@ -242,9 +240,10 @@
             .todo-item {
                 display: flex;
                 justify-content: space-between;
-                background-color: white;
+                background-color: $todo-item;
+                box-shadow: 0px 4px 6px #5B5B5B;
                 align-items: center;
-                padding: 8px;
+                padding: 10px;
                 text-align: center;
                 border-radius: 10px;
                 margin-top: 20px;
@@ -255,6 +254,7 @@
 
                 .todo-checkbox {
                     cursor: pointer;
+                    accent-color: $border;
                 }
 
                 button {
@@ -266,12 +266,16 @@
                     .delete-icon {
                         width: 20px;
                         height: 20px;
+
+                        &:hover {
+                            transform: scale(1.4);
+                            transition: transform 0.2s ease;
+                        }
                     }
                 }
 
                 &.completed {
-                    opacity: 0.6;
-                    color: gray;
+                    background-color: $todo-ok;
                 }
             }
         }

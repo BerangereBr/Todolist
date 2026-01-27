@@ -1,17 +1,39 @@
 @use './variables' as *;
 
+.btn-logout-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    button:hover {
+        background-color: $bandeau;
+        color: $title-color;
+        box-shadow: 0px 4px 6px #5B5B5B;
+        transition: transform 0.2s ease;
+        transform: scale(1.1);
+        border: none;
+
+        @media (max-width:576px) {
+            padding: 0;
+            border-radius: 50%;
+            background-color: transparent;
+        }
+    }
+}
+
 .btn-logout {
     cursor: pointer;
-    background-color: $blue-soft-bg;
-    color: $blue-900;
     border: none;
     border-radius: 10px;
-    padding: 5px 10px;
+    padding: 10px;
+    color: white;
+    background-color: $title-color;
 
-    @media (max-width:576px) {
-        background-color: $blue-900;
+    @media (max-width:720px) {
         padding: 0;
-        color: none;
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
     }
 
     .icon-logout {
