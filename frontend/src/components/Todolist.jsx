@@ -1,17 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAllTodolists, createTodolist, deleteTodolist } from "../services/todolist";
-import { useEffect } from "react";
 import Todo from "./Todo";
-// import deleteHover from '../assets/images/delete-hover.png';
-// import deleteBin from '../assets/images/delete.png';
+import arrow from '../assets/images/arrow.png';
 
 function Todolist() {
     const [todolists, setTodolists] = useState([]);
     const [name, setName] = useState('');
     const [open, setOpen] = useState(null);
+    const [openMobile, setOpenMobile] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 720);
 
     useEffect(() => {
         getAllTodolists().then(res => setTodolists(res.data))
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 720);
+            if (window.innerWidth >= 720) {
+                setOpenMobile(false);
+            };
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     const handleCreate = () => {
@@ -29,11 +42,22 @@ function Todolist() {
             }
         })
     }
-
+    const handleToggleMobile = () => {
+        if (!isDesktop) {
+            setOpenMobile(prev => !prev);
+        }
+    }
+    const handleSetOpen = (id) => {
+        setOpen(id);
+        if (!isDesktop) {
+            setOpenMobile(false);
+        }
+    }
     return (
-        <>
-            <div className="todolists-container">
-                <div className="todolists-names">
+        <div className="todolists-container">
+            <div className="todolists-list-container">
+                {!isDesktop && <button className="todolists-title" onClick={handleToggleMobile}>Mes Todolists<img src={arrow} alt='todolist' className={`todolist-title-icon ${openMobile ? "open" : ""}`} /></button>}
+                <div className={`todolists-list${openMobile ? " active" : ""}`}>
                     <form className="todolist-form"
                         onSubmit={(e) => {
                             e.preventDefault();
@@ -45,28 +69,21 @@ function Todolist() {
                         </button>
                     </form>
                     {todolists.map(todo => (
-                        <div key={todo.id} className={`todolist-list${open === todo.id ? " active" : ""}`}>
-                            <button className="todolist-name-item" onClick={() => setOpen(todo.id)}>
+                        <div key={todo.id} className={`todolist-name${open === todo.id ? " active" : ""}`}>
+                            <button className="todolist-name-item" onClick={() => handleSetOpen(todo.id)}>
                                 {todo.name}
                             </button>
                             <button onClick={() => handleDelete(todo.id)} className="todolist-delete-btn">
                                 <span className="delete-icon"></span>
-                                {/* <img
-                                    src={deleteBin}
-                                    alt="delete"
-                                    className="delete-icon"
-                                    onMouseOver={e => (e.currentTarget.src = deleteHover)}
-                                    onMouseOut={e => (e.currentTarget.src = deleteBin)}
-                                /> */}
                             </button>
                         </div>
                     ))}
                 </div>
-                <div className="todo-container">
-                    {open && <Todo todolist_id={open} />}
-                </div>
             </div>
-        </>
+            <div className="todo-container">
+                {open && <Todo todolist_id={open} />}
+            </div>
+        </div>
     )
 }
 

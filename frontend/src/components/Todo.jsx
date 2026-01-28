@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createTodo, getAllTodos, checkTodo, deleteTodo } from "../services/todo";
 import { useEffect } from "react";
 import '../styles/dashboard.scss';
-import deleteHover from '../assets/images/delete-hover.png';
 import deleteBin from '../assets/images/delete.png';
 
 function Todo({ todolist_id }) {
@@ -76,8 +75,6 @@ function Todo({ todolist_id }) {
                                 src={deleteBin}
                                 alt="delete"
                                 className="delete-icon"
-                                onMouseOver={e => (e.currentTarget.src = deleteHover)}
-                                onMouseOut={e => (e.currentTarget.src = deleteBin)}
                             />
                         </button>
                     </div>

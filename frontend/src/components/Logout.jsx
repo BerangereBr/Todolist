@@ -5,10 +5,10 @@ import '../styles/logout.scss';
 import logoutIcon from '../assets/images/logout.png';
 
 function Logout() {
-    const [sizeWindow, setSizeWindow] = useState(window.innerWidth > 576);
+    const [sizeWindow, setSizeWindow] = useState(window.innerWidth > 720);
     useEffect(() => {
         const handleResize = () => {
-            setSizeWindow(window.innerWidth > 576);
+            setSizeWindow(window.innerWidth > 720);
         };
         window.addEventListener('resize', handleResize);
         return () => {

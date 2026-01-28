@@ -18,23 +18,79 @@
 
     .todolists-container {
         display: grid;
-        grid-template-columns: 35% 60%;
-        width: 95%;
-        gap: 20px;
+        grid-template-columns: 30% 60%;
+        width: 90%;
+        gap: 40px;
 
         @media (max-width:720px) {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .todolists-names {
+        .todolists-list-container {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
             background-color: $bandeau;
             border-radius: 10px;
             box-shadow: 0px 4px 6px #5B5B5B;
             padding: 8px;
+            width: 100%;
+
+            @media (max-width:720px) {
+                position: absolute;
+                width: 50%;
+                top: 120px;
+            }
+
+            .todolists-list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 80%;
+
+                @media (max-width:720px) {
+                    width: 100%;
+                    overflow: hidden;
+                    max-height: 0;
+                    opacity: 0;
+                    transition: max-height 0.4s ease;
+
+                    &.active {
+                        max-height: 1000px;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .todolists-title {
+                display: flex;
+                border: none;
+                background-color: transparent;
+                width: 100%;
+                color: $title-color;
+                font-size: 15px;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Inter', sans-serif;
+
+                .todolist-title-icon {
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 10px;
+                    rotate: 90deg;
+                    transition: transform 0.3s ease;
+
+                    &.open {
+                        transform: rotate(180deg);
+                        transition: transform 0.3s ease;
+                    }
+                }
+            }
 
             .todolist-form {
                 margin: 20px 0;
@@ -90,13 +146,12 @@
                 }
             }
 
-            .todolist-list {
+            .todolist-name {
                 margin-top: 20px;
-                padding: 5px;
+                padding: 0 10px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                width: 80%;
 
                 &:hover {
                     background-color: $todolist-name-hover;
@@ -108,7 +163,7 @@
 
                     .todolist-delete-btn {
                         .delete-icon {
-                            background-image: url("../assets/images/delete-active.png");
+                            background-image: url("../assets/images/delete-hover.png");
                             background-size: contain;
                             background-repeat: no-repeat;
                         }
@@ -125,7 +180,7 @@
 
                     .todolist-delete-btn {
                         .delete-icon {
-                            background-image: url("../assets/images/delete-active.png");
+                            background-image: url("../assets/images/delete-hover.png");
                             background-size: contain;
                             background-repeat: no-repeat;
                         }
@@ -178,6 +233,11 @@
         align-items: center;
         list-style: none;
         padding: 0;
+
+        @media (max-width:720px) {
+            margin-top: 40px;
+            width: 90%;
+        }
 
         .todo-form {
             display: flex;
