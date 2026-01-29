@@ -7,4 +7,4 @@ export const api = axios.create({
     headers: { 'Content-type': 'application/json' },
     withCredentials: true,
 });
-console.log('API_URL =', API_URL);
+export default api;

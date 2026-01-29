@@ -8,7 +8,8 @@ function Todolist() {
     const [name, setName] = useState('');
     const [open, setOpen] = useState(null);
     const [openMobile, setOpenMobile] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 720);
+    const BREAKPOINT = 767
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= BREAKPOINT);
 
     useEffect(() => {
         getAllTodolists().then(res => setTodolists(res.data))
@@ -16,8 +17,8 @@ function Todolist() {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsDesktop(window.innerWidth >= 720);
-            if (window.innerWidth >= 720) {
+            setIsDesktop(window.innerWidth >= BREAKPOINT);
+            if (window.innerWidth >= BREAKPOINT) {
                 setOpenMobile(false);
             };
         };
