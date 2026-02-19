@@ -6,7 +6,7 @@ const pool = new Pool(
     isProduction
         ? {
             connectionString: process.env.DATABASE_URL,
-            ssl: { rejectUnauthorized: false } // Render
+            ssl: { rejectUnauthorized: false } // Supabase
         }
         : {
             user: process.env.PG_user,
