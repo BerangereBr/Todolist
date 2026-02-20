@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
-    'https://todolist-ten-tan.vercel.app',
+    'https://todolist-ten-pearl-25.vercel.app/',
     'http://localhost:5173'
 ];
 
