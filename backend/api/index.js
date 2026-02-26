@@ -1,5 +1,4 @@
-// const app = require('../app');
-// const serverless = require('serverless-http');
+const app = require('../app');
+const serverless = require('serverless-http');
 
-// module.exports = serverless(app);
-module.exports = (req, res) => res.send("Hello");
+module.exports = serverless(app);
