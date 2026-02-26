@@ -8,7 +8,7 @@ function Header() {
             <div className="btn-logout-container">
                 <Logout />
             </div>
-            <h1 className="header-title">Bonjour {user?.username}</h1>
+            <h1 className="header-title">Bonjour {user?.username}, qu'est ce qu'on fait aujourd'hui ?</h1>
         </header>
     );
 }

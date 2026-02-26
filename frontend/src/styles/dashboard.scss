@@ -27,6 +27,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+            gap: 10px;
         }
 
         .todolists-list-container {
@@ -43,7 +45,7 @@
             @media (max-width:767px) {
                 position: absolute;
                 width: 50%;
-                top: 150px;
+                top: 0px;
             }
 
             .todolists-list {
@@ -93,7 +95,7 @@
             }
 
             .todolist-form {
-                margin: 20px 0;
+                margin: 20px;
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -237,8 +239,8 @@
         padding: 0;
 
         @media (max-width:767px) {
-            margin-top: 40px;
             width: 90%;
+            margin-top: 60px;
         }
 
         .todo-form {
