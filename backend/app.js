@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const authRouter = require('../routes/authRouter');
-const todolistsRouter = require('../routes/todolistRouter');
-const todoRouter = require('../routes/todoRouter')
+const authRouter = require('./routes/authRouter');
+const todolistsRouter = require('./routes/todolistRouter');
+const todoRouter = require('./routes/todoRouter')
 const app = express();
 
 app.use(express.json());
