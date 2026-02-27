@@ -27,7 +27,7 @@ app.use(cors({
 app.use('/api/auth', authRouter);
 app.use('/api/todolists', todolistsRouter);
 app.use('/api/todolists/:todolist_id/todos', todoRouter);
-app.get('/api/health', (req, res) => {
+app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });
 });
 module.exports = app;
