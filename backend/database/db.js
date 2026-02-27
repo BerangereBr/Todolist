@@ -17,7 +17,9 @@ const pool = new Pool(
             ssl: false
         }
 );
-
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
+console.log("PG_host:", process.env.PG_host);
 pool.query('SELECT NOW()')
     .then(res => console.log('DB OK:', res.rows[0]))
     .catch(err => console.error('DB ERROR:', err));
