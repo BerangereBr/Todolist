@@ -27,7 +27,8 @@ app.use(cors({
 app.use('/api/auth', authRouter);
 app.use('/api/todolists', todolistsRouter);
 app.use('/api/todolists/:todolist_id/todos', todoRouter);
-app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok' });
+app.get('/test', (req, res) => {
+    console.log('✅ /test route appelée !');  // ça doit apparaître dans les logs Vercel
+    res.status(200).send('Test route OK');
 });
 module.exports = app;
