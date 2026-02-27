@@ -1,5 +1,16 @@
-const app = require('./app');
-const serverless = require('serverless-http');
+const express = require('express');
+const app = express();
 
-console.log("✅ api/index.js chargé et exécuté");
-module.exports = serverless(app);
+app.use(express.json());
+
+// Routes de test
+app.get('/test', (req, res) => {
+    console.log('✅ /test route appelée !'); // apparaît dans les logs Vercel
+    res.send('Test route OK');
+});
+
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok' });
+});
+
+// Exporter directement 
