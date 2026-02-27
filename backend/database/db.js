@@ -1,12 +1,10 @@
 const { Pool } = require('pg');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 const pool = new Pool(
-    isProduction
+    process.env.DATABASE_URL
         ? {
             connectionString: process.env.DATABASE_URL,
-            ssl: { rejectUnauthorized: false }, // Supabase
+            ssl: { rejectUnauthorized: false }
         }
         : {
             user: process.env.PG_user,
