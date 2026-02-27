@@ -28,7 +28,7 @@ app.use(express.json());
 // app.use('/api/todolists', todolistsRouter);
 // app.use('/api/todolists/:todolist_id/todos', todoRouter);
 app.get('/test', (req, res) => {
-    console.log('✅ /test route appelée !');  // ça doit apparaître dans les logs Vercel
+    console.log('✅ /test route appelée !');
     res.status(200).send('Test route OK');
 });
 module.exports = app;
