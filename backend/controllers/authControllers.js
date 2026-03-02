@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const pool = require('../database/db');
+const getPool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
@@ -11,7 +11,7 @@ const signUp = async (req, res) => {
         }
 
         const hashed = await bcrypt.hash(password, 10);
-
+        const pool = getPool();
         const result = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
             [username, email, hashed]
