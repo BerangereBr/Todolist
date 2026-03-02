@@ -3,7 +3,7 @@ const pool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
-
+    console.log("🔹 signup route appelée", req.body);
     try {
         const { username, email, password } = req.body;
         if (!username || !email || !password) {
