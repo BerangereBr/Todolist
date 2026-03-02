@@ -6,11 +6,11 @@ const signUp = async (req, res) => {
 
     try {
         const { username, email, password } = req.body;
-        const hashed = await bcrypt.hash(password, 10);
-
         if (!username || !email || !password) {
             return res.status(400).json({ error: "Tous les champs sont requis" });
         }
+
+        const hashed = await bcrypt.hash(password, 10);
 
         const result = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
