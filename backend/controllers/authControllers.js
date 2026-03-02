@@ -25,7 +25,7 @@ const signUp = async (req, res) => {
             { expiresIn: '2h' }
         );
 
-        res.status(200).json({
+        return res.status(200).json({
             user: {
                 id: user.id,
                 username: user.username,
@@ -59,7 +59,7 @@ const login = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '2h' }
         );
-        res.status(200).json({
+        return res.status(200).json({
             user: {
                 id: user.id,
                 username: user.username,
