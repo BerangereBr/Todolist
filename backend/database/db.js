@@ -15,7 +15,6 @@ const pool = new Pool(
             ssl: false
         }
 );
-console.log("DATABASE_URL =", process.env.DATABASE_URL);
 pool.query('SELECT NOW()')
     .then(res => console.log('DB OK:', res.rows[0]))
     .catch(err => console.error('DB ERROR:', err));
