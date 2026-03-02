@@ -15,8 +15,5 @@ const pool = new Pool(
             ssl: false
         }
 );
-pool.query('SELECT NOW()')
-    .then(res => console.log('DB OK:', res.rows[0]))
-    .catch(err => console.error('DB ERROR:', err));
 
 module.exports = pool;
