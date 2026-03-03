@@ -1,3 +1,4 @@
-module.exports = (req, res) => {
-    res.status(200).send("API WORKS");
-};
+const app = require('../app');
+const serverless = require('serverless-http')
+console.log("✅ api/index.js chargé et exécuté");
+module.exports = serverless(app);

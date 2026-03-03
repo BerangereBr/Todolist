@@ -24,10 +24,10 @@ app.use(cors({
 }));
 
 
-app.use('/auth', authRouter);
-app.use('/todolists', todolistsRouter);
-app.use('/todolists/:todolist_id/todos', todoRouter);
-app.get('/health', (req, res) => {
+app.use('/api/auth', authRouter);
+app.use('/api/todolists', todolistsRouter);
+app.use('/api/todolists/:todolist_id/todos', todoRouter);
+app.get('/api/health', (req, res) => {
     console.log('✅ /test route appelée !');
     res.status(200).send('Test route OK');
 });
