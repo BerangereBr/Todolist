@@ -19,7 +19,7 @@ app.use(cors({
     },
     credentials: true
 }));
-app.options('/*', cors()); // préflight CORS
+
 app.use((req, res, next) => {
     console.log("URL reçue par Express :", req.url, req.method);
     next();
