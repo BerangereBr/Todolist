@@ -30,6 +30,6 @@ app.use('/todolists', todolistsRouter);
 app.use('/todolists/:todolist_id/todos', todoRouter);
 app.get('/health', (req, res) => {
     console.log('✅ /test route appelée !');
-    res.status(200).send('Test route OK');
+    return res.status(200).send('Test route OK');
 });
 module.exports = app;
