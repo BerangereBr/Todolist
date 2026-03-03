@@ -7,6 +7,11 @@ const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+    console.log("URL reçue par Express :", req.url);
+    next();
+});
+
 const allowedOrigins = [
     'https://todolist-ten-pearl-25.vercel.app',
     'http://localhost:5173'
