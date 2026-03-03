@@ -6,12 +6,10 @@ const todoRouter = require('./routes/todoRouter')
 const app = express();
 
 app.use(express.json());
-
 app.use((req, res, next) => {
-    console.log("URL reçue par Express :", req.url);
+    console.log("URL reçue par Express :", req.url, req.method);
     next();
 });
-
 const allowedOrigins = [
     'https://todolist-ten-pearl-25.vercel.app',
     'http://localhost:5173'
@@ -24,7 +22,7 @@ app.use(cors({
     },
     credentials: true
 }));
-
+app.options('*', cors()); // préflight CORS
 
 app.use('/auth', authRouter);
 app.use('/todolists', todolistsRouter);
