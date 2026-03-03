@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 app.use('/auth', authRouter);
 app.use('/todolists', todolistsRouter);
 app.use('/todolists/:todolist_id/todos', todoRouter);
-app.get('/health', (req, res) => {
+app.get('/api/health', (req, res) => {
     console.log('✅ /test route appelée !');
     return res.status(200).send('Test route OK');
 });
