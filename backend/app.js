@@ -18,7 +18,10 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-    origin: true,
+    origin: (origin, callback) => {
+        console.log("Origin reçu :", origin);
+        callback(null, true); // pour tester, autorise tout
+    },
     credentials: true
 }));
 
