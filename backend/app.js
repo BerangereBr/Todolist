@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     console.log("URL reçue par Express :", req.url, req.method);
     next();
 });
-app.options('/*', cors()); // gère toutes les requêtes OPTIONS
+
 app.use('/auth', authRouter);
 app.use('/todolists', todolistsRouter);
 app.use('/todolists/:todolist_id/todos', todoRouter);
