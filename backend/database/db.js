@@ -1,26 +1,13 @@
+// database/db.js
 const { Pool } = require('pg');
 
-let pool;
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL, // doit inclure le mot de passe correct
+    ssl: { rejectUnauthorized: false }          // nécessaire pour Supabase
+});
 
-function getPool() {
-    if (!pool) {
-        pool = new Pool(
-            process.env.DATABASE_URL
-                ? {
-                    connectionString: process.env.DATABASE_URL,
-                    ssl: { rejectUnauthorized: false }
-                }
-                : {
-                    user: process.env.PG_user,
-                    host: process.env.PG_host,
-                    database: process.env.PG_ddb,
-                    password: process.env.PG_password,
-                    port: process.env.PG_port,
-                    ssl: false
-                }
-        );
-    }
-    return pool;
-}
+pool.query('SELECT NOW()')
+    .then(res => console.log('DB OK:', res.rows[0]))
+    .catch(err => console.error('DB ERROR:', err));
 
-module.exports = getPool;
+module.exports = pool;

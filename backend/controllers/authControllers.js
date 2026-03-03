@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const getPool = require('../database/db');
+const pool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
@@ -15,9 +15,6 @@ const signUp = async (req, res) => {
 
         console.log("3️⃣ hash password");
         const hashed = await bcrypt.hash(password, 10);
-
-        console.log("4️⃣ getPool");
-        const pool = getPool();
 
         console.log("5️⃣ requête SQL");
         const result = await pool.query(
