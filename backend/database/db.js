@@ -1,5 +1,12 @@
 const { Pool } = require('pg');
 
+console.log("🔎 Variables d'environnement :");
+console.log("PG_HOST:", process.env.PG_HOST);
+console.log("PG_USER:", process.env.PG_USER);
+console.log("PG_DATABASE:", process.env.PG_DATABASE);
+console.log("PG_PORT:", process.env.PG_PORT);
+console.log("PG_PASSWORD existe ?", !!process.env.PG_PASSWORD);
+
 const pool = new Pool({
     host: process.env.PG_HOST,
     user: process.env.PG_USER,
