@@ -1,18 +1,7 @@
 const { Pool } = require('pg');
 
-console.log("🔎 Variables d'environnement :");
-console.log("PG_HOST:", process.env.PG_HOST);
-console.log("PG_USER:", process.env.PG_USER);
-console.log("PG_DATABASE:", process.env.PG_DATABASE);
-console.log("PG_PORT:", process.env.PG_PORT);
-console.log("PG_PASSWORD existe ?", !!process.env.PG_PASSWORD);
-
 const pool = new Pool({
-    host: process.env.PG_HOST,
-    user: process.env.PG_USER,
-    database: process.env.PG_DATABASE,
-    password: process.env.PG_PASSWORD,
-    port: process.env.PG_PORT,
+    connectionString: process.env.DATABASE_URL, // doit inclure le mot de passe correct
     ssl: { rejectUnauthorized: false }          // nécessaire pour Supabase
 });
 
