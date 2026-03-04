@@ -3,26 +3,21 @@ const pool = require('../database/db');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
-    console.log("1️⃣ signup appelée");
 
     try {
         const { username, email, password } = req.body;
 
         if (!username || !email || !password) {
-            console.log("2️⃣ données reçues");
             return res.status(400).json({ error: "Tous les champs sont requis" });
         }
 
-        console.log("3️⃣ hash password");
         const hashed = await bcrypt.hash(password, 10);
 
-        console.log("5️⃣ requête SQL");
         const result = await pool.query(
             'INSERT INTO users (username, email, password) VALUES ($1,$2,$3) RETURNING id, username, email',
             [username, email, hashed]
         );
 
-        console.log("6️⃣ requête OK");
         const user = result.rows[0];
 
         const token = jwt.sign(

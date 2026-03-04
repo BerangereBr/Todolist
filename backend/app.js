@@ -14,22 +14,21 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: (origin, callback) => {
-        console.log("Origin reçu :", origin);
-        callback(null, true); // pour tester, autorise tout
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+            console.log("✅ Origine autorisée :", origin);
+            callback(null, true);
+        } else {
+            console.log("❌ Origine interdite :", origin);
+            callback(new Error('Not allowed by CORS'));
+        }
     },
     credentials: true
 }));
 
-app.use((req, res, next) => {
-    console.log("URL reçue par Express :", req.url, req.method);
-    next();
-});
 
 app.use('/api/auth', authRouter);
 app.use('/api/todolists', todolistsRouter);
 app.use('/api/todolists/:todolist_id/todos', todoRouter);
-app.get('/api/health', (req, res) => {
-    console.log('✅ /test route appelée !');
-    return res.status(200).send('Test route OK');
-});
 module.exports = app;

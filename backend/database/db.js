@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL, // doit inclure le mot de passe correct
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },          // nécessaire pour Supabase
     options: '-c search_path=public'
 });
