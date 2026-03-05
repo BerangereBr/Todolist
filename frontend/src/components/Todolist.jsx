@@ -54,6 +54,7 @@ function Todolist() {
             setOpenMobile(false);
         }
     }
+    const currentTodolist = todolists.find(t => t.id === open);
     return (
         <div className="todolists-container">
             <div className="todolists-list-container">
@@ -81,10 +82,19 @@ function Todolist() {
                     ))}
                 </div>
             </div>
-            <div className="todo-container">
-                {open && <Todo todolist_id={open} />}
+            < div className="todo-container">
+                {open && (
+                    <>
+                        {!isDesktop && (
+                            <h2 className="todo-title">
+                                {currentTodolist?.name}
+                            </h2>
+                        )}
+                        <Todo todolist_id={open} />
+                    </>
+                )}
             </div>
-        </div>
+        </div >
     )
 }
 

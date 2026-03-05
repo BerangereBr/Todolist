@@ -95,7 +95,7 @@
             }
 
             .todolist-form {
-                margin: 20px;
+                margin: 20px 0;
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -243,6 +243,13 @@
             margin-top: 60px;
         }
 
+        .todo-title {
+            font-family: 'Lora', serif;
+            text-align: center;
+            color: $title-color;
+
+        }
+
         .todo-form {
             display: flex;
             justify-content: center;
@@ -319,8 +326,16 @@
                     background-color 0.3s ease;
 
                 .todo-checkbox {
+                    appearance: none;
+                    border: 2px solid $border;
                     cursor: pointer;
-                    accent-color: $border;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 10px;
+                }
+
+                input[type="checkbox"]:checked {
+                    background: $border;
                 }
 
                 button {
@@ -342,6 +357,7 @@
 
                 &.completed {
                     background-color: rgba($border, 0.4);
+                    text-decoration: line-through;
                 }
             }
         }
