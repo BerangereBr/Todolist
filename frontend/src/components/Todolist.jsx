@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllTodolists, createTodolist, deleteTodolist } from "../services/todolist";
 import Todo from "./Todo";
-import arrow from '../assets/images/arrow.png';
 
 function Todolist() {
     const [todolists, setTodolists] = useState([]);
@@ -58,7 +57,7 @@ function Todolist() {
     return (
         <div className="todolists-container">
             <div className="todolists-list-container">
-                {!isDesktop && <button className="todolists-title" onClick={handleToggleMobile}>Mes Todolists<img src={arrow} alt='todolist' className={`todolist-title-icon ${openMobile ? "open" : ""}`} /></button>}
+                {!isDesktop && <button className="todolists-title" onClick={handleToggleMobile}>Mes Todolists<span className={`todolist-title-icon ${openMobile ? "open" : ""}`} ></span></button>}
                 <div className={`todolists-list${openMobile ? " active" : ""}`}>
                     <form className="todolist-form"
                         onSubmit={(e) => {

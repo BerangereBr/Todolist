@@ -1,11 +1,12 @@
 import Signup from "../components/SignUp";
 import Login from "../components/Login";
 import "../styles/connexion.scss";
+import Color from "../components/Color";
 
 function Connexion() {
-
     return (
         <>
+            <Color />
             <header>
                 <h1>Tout ce que vous avez à faire, au même endroit</h1>
             </header>

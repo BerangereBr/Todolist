@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createTodo, getAllTodos, checkTodo, deleteTodo } from "../services/todo";
 import { useEffect } from "react";
 import '../styles/dashboard.scss';
-import deleteBin from '../assets/images/delete.png';
 
 function Todo({ todolist_id }) {
     const [todos, setTodos] = useState([]);
@@ -70,12 +69,8 @@ function Todo({ todolist_id }) {
                             onChange={() => handleCheck(t)}>
                         </input>
                         {t.description}
-                        <button onClick={() => handleDelete(t.id)}>
-                            <img
-                                src={deleteBin}
-                                alt="delete"
-                                className="delete-icon"
-                            />
+                        <button onClick={() => handleDelete(t.id)} className='delete-btn'>
+                            <span className="delete-icon"></span>
                         </button>
                     </div>
                 ))}

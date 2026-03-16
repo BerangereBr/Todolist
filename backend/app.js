@@ -17,7 +17,6 @@ app.use(cors({
         if (!origin) return callback(null, true);
 
         if (allowedOrigins.includes(origin)) {
-            console.log("✅ Origine autorisée :", origin);
             callback(null, true);
         } else {
             console.log("❌ Origine interdite :", origin);

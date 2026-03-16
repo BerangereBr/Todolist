@@ -1,13 +1,11 @@
-@use './variables' as *;
-
 .btn-logout-container {
     position: absolute;
     top: 20px;
     right: 20px;
 
     button:hover {
-        background-color: $bandeau;
-        color: $title-color;
+        background-color: var(--bandeau);
+        color: var(--title-color);
         box-shadow: 0px 4px 6px #5B5B5B;
         transition: transform 0.2s ease;
         transform: scale(1.1);
@@ -25,7 +23,7 @@
     border-radius: 10px;
     padding: 10px;
     color: white;
-    background-color: $border;
+    background-color: var(--border);
 
     @media (max-width:767px) {
         .icon-logout {
@@ -38,7 +36,7 @@
         background-color: transparent;
         width: 40px;
         height: 40px;
-        background-image: url("../assets/images/logout.png");
+        background-image: var(--logout);
         background-size: contain;
         background-repeat: no-repeat;
     }

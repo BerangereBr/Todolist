@@ -1,0 +1,113 @@
+.theme-buttons-container {
+    display: flex;
+    align-items: center;
+
+    .theme-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        border-radius: 50px;
+        margin: 20px;
+        background: var(--bandeau);
+        box-shadow: 0px 4px 6px #5B5B5B;
+
+        .button-wheel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+            border: none;
+            color: black;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+    }
+
+    .theme-buttons-open {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        background: var(--bandeau);
+        box-shadow: 0px 4px 6px #5B5B5B;
+        border-radius: 50px;
+        margin: 20px;
+
+        .button-wheel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+            border: none;
+            color: black;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .theme-menu {
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            overflow: hidden;
+            animation: slide 1s ease forwards;
+
+            .theme-button {
+                padding: 10px;
+                border-radius: 10px;
+                background: none;
+                border: none;
+            }
+
+            .theme-button:hover {
+                color: white;
+                transition: 0.2s;
+            }
+
+            .theme-orange:hover {
+                background: #F97316;
+            }
+
+            .theme-rouge:hover {
+                background: #EF4444;
+            }
+
+            .theme-violet:hover {
+                background: #8B5CF6;
+            }
+
+            .theme-bleu:hover {
+                background: #3B82F6;
+            }
+        }
+
+    }
+}
+
+@keyframes slide {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    ;
+
+    to {
+        width: 250px;
+        opacity: 1;
+    }
+}
