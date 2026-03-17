@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { themes } from "../styles/themes";
 import "../styles/color.scss";
 import colorWheel from '../assets/images/color-wheel.png'
@@ -12,13 +12,17 @@ function Color() {
 
     const changeTheme = (newTheme) => {
         setTheme(newTheme);
-        const root = document.documentElement;
-        localStorage.setItem("theme", theme)
+    };
 
-        Object.entries(themes[newTheme]).forEach(([key, value]) => {
+    useEffect(() => {
+        const root = document.documentElement;
+
+        Object.entries(themes[theme]).forEach(([key, value]) => {
             root.style.setProperty(key, value);
         });
-    };
+        localStorage.setItem("theme", theme);
+
+    }, [theme]);
 
     return (
         <div className="theme-buttons-container">
