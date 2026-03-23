@@ -18,6 +18,11 @@ import addTodolistHoverOrange from '../assets/images/theme-orange/add-todolist-h
 import addTodolistHoverRed from '../assets/images/theme-red/add-todolist-hover-red.png';
 import addTodolistHoverPurple from '../assets/images/theme-purple/add-todolist-hover-purple.png';
 import addTodolistHoverBlue from '../assets/images/theme-blue/add-todolist-hover-blue.png';
+import binWhite from '../assets/images/delete-hover.png';
+import arrowWhite from '../assets/images/theme-dark/arrow-white.png';
+import logoutWhite from '../assets/images/theme-dark/logout-white.png';
+import addTodolistWhite from '../assets/images/theme-dark/add-todolist-white.png';
+import addTodolistHoverWhite from '../assets/images/theme-dark/add-todolist-hover-white.png';
 
 export const themes = {
     orange: {
@@ -26,7 +31,10 @@ export const themes = {
         '--todolist-name-hover': 'rgba(249, 115, 22, 0.9)',
         '--todo-item': '#FBFDFF',
         '--border': '#F97316',
+        '--border-loading': 'rgba(249, 115, 22, 0.3)',
         '--title-color': '#F97316',
+        '--text': '#000000',
+        '--text-secondary': '#ffffff',
         '--hover': '#FB923C',
         '--bin': `url(${binOrange})`,
         '--arrow': `url(${arrowOrange})`,
@@ -41,7 +49,10 @@ export const themes = {
         '--todolist-name-hover': 'rgba(239, 68, 68, 0.9)',
         '--todo-item': '#FBFDFF',
         '--border': '#EF4444',
+        '--border-loading': 'rgba(239, 68, 68, 0.3)',
         '--title-color': '#EF4444',
+        '--text': '#000000',
+        '--text-secondary': '#ffffff',
         '--hover': '#F87171',
         '--bin': `url(${binRed})`,
         '--arrow': `url(${arrowRed})`,
@@ -55,7 +66,10 @@ export const themes = {
         '--todolist-name-hover': 'rgba(139, 92, 246, 0.9)',
         '--todo-item': '#FBFDFF',
         '--border': '#8B5CF6',
+        '--border-loading': 'rgba(139, 92, 246, 0.3)',
         '--title-color': '#8B5CF6',
+        '--text': '#000000',
+        '--text-secondary': '#ffffff',
         '--hover': '#A78BFA',
         '--bin': `url(${binPurple})`,
         '--arrow': `url(${arrowPurple})`,
@@ -70,12 +84,33 @@ export const themes = {
         '--todolist-name-hover': 'rgba(59, 130, 246, 0.9)',
         '--todo-item': '#FBFDFF',
         '--border': '#3B82F6',
+        '--border-loading': 'rgba(59, 130, 246, 0.3)',
         '--title-color': '#3B82F6',
+        '--text': '#000000',
+        '--text-secondary': '#ffffff',
         '--hover': '#60A5FA',
         '--bin': `url(${binBlue})`,
         '--arrow': `url(${arrowBlue})`,
         '--logout': `url(${logoutBlue})`,
         '--add-todolist': `url(${addTodolistBlue})`,
         '--add-todolist-hover': `url(${addTodolistHoverBlue})`,
+    },
+    dark: {
+        '--bg': '#0D1117',
+        '--bandeau': '#161B22',
+        '--todo-item': '#1F2933',
+        '--border': '#30363D',
+        '--border-loading': 'rgba(48, 54, 61, 0.3)',
+        '--title-color': '#F0F6FC',
+        '--text': '#E6EDF3',
+        '--text-secondary': '#4e4f50',
+        '--hover': '#21262D',
+        '--todolist-name-hover': '#262C36',
+        '--shadow': '0 4px 12px rgba(0,0,0,0.6)',
+        '--bin': `url(${binWhite})`,
+        '--arrow': `url(${arrowWhite})`,
+        '--logout': `url(${logoutWhite})`,
+        '--add-todolist': `url(${addTodolistWhite})`,
+        '--add-todolist-hover': `url(${addTodolistHoverWhite})`,
     }
 };

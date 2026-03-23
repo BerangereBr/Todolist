@@ -64,13 +64,14 @@
             flex-direction: row;
             justify-content: center;
             overflow: hidden;
-            animation: slide 1s ease forwards;
+            animation: slide 0.25s ease forwards;
 
             .theme-button {
                 padding: 10px;
                 border-radius: 10px;
                 background: none;
                 border: none;
+                color: var(--text);
             }
 
             .theme-button:hover {
@@ -93,6 +94,10 @@
             .theme-bleu:hover {
                 background: #3B82F6;
             }
+
+            .theme-dark:hover {
+                background: #3A3A3A;
+            }
         }
 
     }
@@ -107,7 +112,7 @@
     ;
 
     to {
-        width: 250px;
+        width: 300px;
         opacity: 1;
     }
 }

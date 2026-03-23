@@ -1,9 +1,9 @@
-header {
+.header-log {
     text-align: center;
     padding: 40px 0;
 
     h1 {
-        color: var(--border);
+        color: var(--title-color);
     }
 }
 
@@ -45,6 +45,10 @@ header {
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    label {
+        color: var(--text);
+    }
 
     button {
         cursor: pointer;
